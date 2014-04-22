@@ -77,10 +77,22 @@ Grid DC::gameOfLife(Grid* g)
 						livingNeighbours++;
 				}
 			}
-			if(livingNeighbours < 3 || livingNeighbours > 5)
-				newGrid.setTileType(i, j,DungeonTile::CLEAR);
-			else
-				newGrid.setTileType(i, j, DungeonTile::WALL);
+            
+            if(newGrid.getTileType(i,j) == DungeonTile::WALL)
+            {
+            
+                if(livingNeighbours < 4 || livingNeighbours > 8)
+                    newGrid.setTileType(i, j,DungeonTile::CLEAR);
+                else
+                    newGrid.setTileType(i, j, DungeonTile::WALL);
+            }
+            else
+            {
+                if(livingNeighbours >= 5)
+                    newGrid.setTileType(i,j, DungeonTile::WALL);
+                else
+                    newGrid.setTileType(i,j, DungeonTile::CLEAR);
+            }
 		}
 	}
 	return newGrid;
