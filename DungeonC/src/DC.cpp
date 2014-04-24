@@ -14,7 +14,8 @@ DC::DC(int width, int height, int iterations, string path)
     Grid mGrid = Grid(width,height,path);
 	mGrid.print();
 	
-	translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
+	//translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
+	translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
 	
 	mGrid.print();
 	for(int i = 0; i < iterations; i++)
@@ -30,13 +31,19 @@ void DC::translate(Grid *g,  char* byteArray)
 	int index = 0;
 	int byteArrayIndex = 0;
 	char currentByte = byteArray[0];
-    
-	while(currentByte != '\0')
-	{
+    int offset = 0;
+    while(true)
+    {
+        if(currentByte == '\0')
+        {
+            byteArrayIndex = 0;
+            currentByte = byteArray[0];
+            offset = index;
+        }
 		int mask = 1;
 		for(int i = 0; i < 8; i++)
 		{
-			index = 8*byteArrayIndex + i;
+			index = 8*byteArrayIndex + i + offset;
 			int gridX = (int)(index % g->getWidth());
 			int gridY = (int)(index / g->getWidth());
 			
