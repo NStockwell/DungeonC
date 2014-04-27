@@ -78,6 +78,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\DungeonC\include\DungeonTile.h" />
     <ClInclude Include="..\..\DungeonC\include\Grid.h" />
+    <ClInclude Include="..\..\DungeonC\include\Room.h" />
+    <ClInclude Include="..\..\DungeonC\include\RoomManager.h" />
     <ClInclude Include="..\..\DungeonC\include\Translator.h" />
     <ClInclude Include="..\..\DungeonC\src\DC.h" />
     <ClInclude Include="stdafx.h" />
@@ -87,6 +89,8 @@
     <ClCompile Include="..\..\DungeonC\src\DC.cpp" />
     <ClCompile Include="..\..\DungeonC\src\DungeonTile.cpp" />
     <ClCompile Include="..\..\DungeonC\src\Grid.cpp" />
+    <ClCompile Include="..\..\DungeonC\src\Room.cpp" />
+    <ClCompile Include="..\..\DungeonC\src\RoomManager.cpp" />
     <ClCompile Include="DungeonCreatorVS.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

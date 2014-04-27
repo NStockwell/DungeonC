@@ -3,16 +3,15 @@
 
 Grid::Grid(int width, int height, string path)
 {
-	
 	mWidth = width;
 	mHeight = height;
     mPath = path;
 	for(int i = 0; i < height; i++)
 	{
-		vector<DungeonTile> vDT;
+		vector<DungeonTile*> vDT;
 		for(int j = 0; j < width; j++)
 		{
-			DungeonTile dTile = DungeonTile(i,j,DungeonTile::TileType::CLEAR);
+			DungeonTile *dTile = new DungeonTile(i,j,DungeonTile::TileType::CLEAR);
 			vDT.push_back(dTile);
 		}
 		mTiles.push_back(vDT);
@@ -48,11 +47,11 @@ void Grid::print()
 			fprintf(mFile, " ");
 		
 			fprintf(mFile," ");
-		vector<DungeonTile> vDT = mTiles.at(i);
+		vector<DungeonTile*> vDT = mTiles.at(i);
 		for(int j = 0; j < mWidth; j++)
 		{
-			DungeonTile dTile = vDT.at(j);
-			dTile.print(mFile);
+			DungeonTile *dTile = vDT.at(j);
+			dTile->print(mFile);
 			fprintf(mFile," ");
 		}
 		fprintf(mFile,"\n");
@@ -67,11 +66,11 @@ int Grid::getWidth(){return mWidth;}
 int Grid::getHeight(){return mHeight;}
 void Grid::setTileType(int x, int y, DungeonTile::TileType newType)
 	{
-		mTiles.at(y).at(x).setType(newType);
+		mTiles.at(y).at(x)->setType(newType);
 	}
 
 	
 DungeonTile::TileType Grid::getTileType(int x, int y)
 	{
-		return mTiles.at(y).at(x).getType();
+		return mTiles.at(y).at(x)->getType();
 	}

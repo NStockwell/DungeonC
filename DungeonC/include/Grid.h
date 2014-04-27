@@ -26,7 +26,7 @@ private:
 	int mWidth;
 	int mHeight;
     string mPath;
-	vector<vector<DungeonTile> > mTiles;
+	vector<vector<DungeonTile*> > mTiles;
 };
 
 #endif
