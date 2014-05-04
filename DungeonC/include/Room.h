@@ -20,6 +20,7 @@ public:
 	int getId();
 	bool addTile(DungeonTile* dt);
 	void removeTile(DungeonTile* dt);
+	bool isEmpty();
 
 	DungeonTile* getEasternTileAtLine(int line);
 	DungeonTile* getWesternTileAtLine(int line);

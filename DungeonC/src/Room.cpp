@@ -35,6 +35,11 @@ void  Room::removeTile(DungeonTile* dt)
 
 }
 
+bool Room::isEmpty()
+{
+	return mTiles.empty();
+}
+
 DungeonTile*  Room::getEasternTileAtLine(int line)
 {
 	return NULL;

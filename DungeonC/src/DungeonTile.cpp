@@ -47,3 +47,11 @@ void DungeonTile::print(FILE* f)
 			break;
 	}
 }
+
+bool DungeonTile::isEqual(DungeonTile* dt1)
+{
+	if(dt1 == NULL || dt1->getX() != mX || dt1->getY() != mY || dt1->getType() != mType)
+		return false;
+
+	return true;
+}

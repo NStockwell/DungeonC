@@ -26,16 +26,15 @@ RoomManager::RoomManager(Grid* g)
 void RoomManager::findRooms()
 {
 	int numRooms = 1;
-
-
 	while(!mUnvisitedTiles.empty())
 	{
 		Room *room = new Room(numRooms);
-		mRooms.push_back(room);
-		exploreTile(*(mUnvisitedTiles.begin()), room, NORTH);
-		numRooms++;
-		if(numRooms > 300)
-			break;
+		exploreTile(mUnvisitedTiles.front(), room, NORTH);
+		if(!room->isEmpty())
+		{
+			mRooms.push_back(room);
+			numRooms++;
+		}
 	}
 }
 
@@ -82,7 +81,7 @@ void RoomManager::exploreTile(DungeonTile* dt, Room* r, Direction d)
 		break;
 
 	case DungeonTile::WALL:
-
+		mUnvisitedTiles.remove(dt);
 		mVisitedWalls.push_front(dt);
 		break;
 

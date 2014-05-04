@@ -31,6 +31,9 @@ public:
 	void setType(TileType type);
 	void print(FILE* f);
 
+	
+	bool isEqual(DungeonTile* dt1);
+
 private:
 	int mX;
 	int mY;
