@@ -20,9 +20,15 @@ int Room::getId()
 	return mId;
 };
 
-void  Room::addTile(DungeonTile* dt)
+bool  Room::addTile(DungeonTile* dt)
 {
+	for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{
+		if(*it == dt)
+			return false;
+	}
 	mTiles.push_back(dt);
+	return true;
 }
 void  Room::removeTile(DungeonTile* dt)
 {
@@ -31,20 +37,23 @@ void  Room::removeTile(DungeonTile* dt)
 
 DungeonTile*  Room::getEasternTileAtLine(int line)
 {
-
+	return NULL;
 }
 
 DungeonTile*  Room::getWesternTileAtLine(int line)
 {
-
+	
+	return NULL;
 }
 
 DungeonTile*  Room::getSoutherTileAtColumn(int column)
 {
-
+	
+	return NULL;
 }
 
 DungeonTile* Room:: getNorthernTileAtColumn(int column)
 {
-
+	
+	return NULL;
 }

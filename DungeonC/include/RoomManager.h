@@ -12,16 +12,28 @@
 #include "Grid.h"
 #include "Room.h"
 #include <vector>
+#include <list>
+
+typedef enum
+{
+	NORTH = 0,
+		SOUTH = 1,
+		WEST,
+		EAST, 
+		DIRECTION_COUNT
+} Direction;
 
 class RoomManager
 {
 public:
 	RoomManager(Grid* g);
 	void findRooms();
-
+	void exploreTile(DungeonTile* dt, Room* r, Direction d);
 private:
 	Grid* mGrid;
 	vector<Room*> mRooms;
+	list<DungeonTile*> mUnvisitedTiles;
+	list<DungeonTile*> mVisitedWalls;
 };
 
 #endif

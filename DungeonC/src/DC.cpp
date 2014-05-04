@@ -24,6 +24,9 @@ DC::DC(int width, int height, int iterations, string path)
 		mGrid = gameOfLife(&mGrid);
 		mGrid.print();
 	}
+
+	RoomManager* rm = new RoomManager(&mGrid);
+	rm->findRooms();
 }
 
 

@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Grid.h"
 #include "DungeonTile.h"
+#include "RoomManager.h"
 
 using namespace std;
 

@@ -18,7 +18,7 @@ class Room
 public:
 	Room(int id);
 	int getId();
-	void addTile(DungeonTile* dt);
+	bool addTile(DungeonTile* dt);
 	void removeTile(DungeonTile* dt);
 
 	DungeonTile* getEasternTileAtLine(int line);

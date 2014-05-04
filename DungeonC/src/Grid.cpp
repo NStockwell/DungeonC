@@ -11,7 +11,7 @@ Grid::Grid(int width, int height, string path)
 		vector<DungeonTile*> vDT;
 		for(int j = 0; j < width; j++)
 		{
-			DungeonTile *dTile = new DungeonTile(i,j,DungeonTile::TileType::CLEAR);
+			DungeonTile *dTile = new DungeonTile(j,i,DungeonTile::TileType::CLEAR);
 			vDT.push_back(dTile);
 		}
 		mTiles.push_back(vDT);
@@ -65,12 +65,20 @@ void Grid::print()
 int Grid::getWidth(){return mWidth;}
 int Grid::getHeight(){return mHeight;}
 void Grid::setTileType(int x, int y, DungeonTile::TileType newType)
-	{
-		mTiles.at(y).at(x)->setType(newType);
-	}
+{
+	mTiles.at(y).at(x)->setType(newType);
+}
 
 	
 DungeonTile::TileType Grid::getTileType(int x, int y)
-	{
-		return mTiles.at(y).at(x)->getType();
-	}
+{
+	return mTiles.at(y).at(x)->getType();
+}
+
+
+DungeonTile* Grid::getTile(int x, int y)
+{
+	if(y >= mHeight || x >= mWidth || y < 0 || x < 0)
+		return NULL;
+	return mTiles.at(y).at(x);
+}
