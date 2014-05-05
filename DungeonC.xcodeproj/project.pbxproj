@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E64C8EE19140F3000D7FDB7 /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E64C8EC19140F3000D7FDB7 /* Room.cpp */; };
+		2E64C8EF19140F3000D7FDB7 /* RoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E64C8ED19140F3000D7FDB7 /* RoomManager.cpp */; };
 		2E921F201906D5650045A314 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E921F1F1906D5650045A314 /* main.cpp */; };
 		2E921F221906D5650045A314 /* DungeonC.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E921F211906D5650045A314 /* DungeonC.1 */; };
 		2E921F311906D5B30045A314 /* DC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E921F2D1906D5B30045A314 /* DC.cpp */; };
@@ -28,6 +30,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E64C8EC19140F3000D7FDB7 /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Room.cpp; sourceTree = "<group>"; };
+		2E64C8ED19140F3000D7FDB7 /* RoomManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomManager.cpp; sourceTree = "<group>"; };
+		2E64C8F019140F3600D7FDB7 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		2E64C8F119140F3600D7FDB7 /* RoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomManager.h; sourceTree = "<group>"; };
 		2E921F1C1906D5640045A314 /* DungeonC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DungeonC; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E921F1F1906D5650045A314 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2E921F211906D5650045A314 /* DungeonC.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DungeonC.1; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 		2E921F281906D5B30045A314 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				2E64C8F019140F3600D7FDB7 /* Room.h */,
+				2E64C8F119140F3600D7FDB7 /* RoomManager.h */,
 				2E921F291906D5B30045A314 /* DungeonTile.h */,
 				2E921F2A1906D5B30045A314 /* Grid.h */,
 				2E921F2B1906D5B30045A314 /* Translator.h */,
@@ -91,6 +99,8 @@
 		2E921F2C1906D5B30045A314 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2E64C8EC19140F3000D7FDB7 /* Room.cpp */,
+				2E64C8ED19140F3000D7FDB7 /* RoomManager.cpp */,
 				2E921F2D1906D5B30045A314 /* DC.cpp */,
 				2E921F2E1906D5B30045A314 /* DC.h */,
 				2E921F2F1906D5B30045A314 /* DungeonTile.cpp */,
@@ -154,6 +164,8 @@
 				2E921F321906D5B30045A314 /* DungeonTile.cpp in Sources */,
 				2E921F201906D5650045A314 /* main.cpp in Sources */,
 				2E921F331906D5B30045A314 /* Grid.cpp in Sources */,
+				2E64C8EF19140F3000D7FDB7 /* RoomManager.cpp in Sources */,
+				2E64C8EE19140F3000D7FDB7 /* Room.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +275,7 @@
 				2E921F271906D5650045A314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
