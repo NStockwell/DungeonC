@@ -42,23 +42,80 @@ bool Room::isEmpty()
 
 DungeonTile*  Room::getEasternTileAtLine(int line)
 {
-	return NULL;
+    DungeonTile* returnTile = NULL;
+    int eastest = 0;
+    for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{
+        if((*it)->getY() == line)
+        {
+            int xPos =(*it)->getX();
+            if(xPos > eastest)
+            {
+                eastest = xPos;
+                returnTile = *it;
+            }
+        }
+    }
+    
+	return returnTile;
 }
 
 DungeonTile*  Room::getWesternTileAtLine(int line)
 {
-	
-	return NULL;
+    DungeonTile* returnTile = NULL;
+    int westest = 0;
+    for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{
+        if((*it)->getY() == line)
+        {
+            int xPos =(*it)->getX();
+            if(xPos > westest)
+            {
+                westest = xPos;
+                returnTile = *it;
+            }
+        }
+    }
+    
+	return returnTile;
 }
 
-DungeonTile*  Room::getSoutherTileAtColumn(int column)
+DungeonTile*  Room::getSouthernTileAtColumn(int column)
 {
-	
-	return NULL;
+    DungeonTile* returnTile = NULL;
+    int southest = 0;
+    for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{
+        if((*it)->getX() == column)
+        {
+            int yPos =(*it)->getY();
+            if(yPos > southest)
+            {
+                southest = yPos;
+                returnTile = *it;
+            }
+        }
+    }
+    
+	return returnTile;
 }
 
 DungeonTile* Room:: getNorthernTileAtColumn(int column)
 {
-	
-	return NULL;
+    DungeonTile* returnTile = NULL;
+    int northern = 0;
+    for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{
+        if((*it)->getX() == column)
+        {
+            int yPos =(*it)->getY();
+            if(yPos > northern)
+            {
+                northern = yPos;
+                returnTile = *it;
+            }
+        }
+    }
+    
+	return returnTile;
 }

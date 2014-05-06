@@ -42,50 +42,50 @@ void RoomManager::exploreTile(DungeonTile* dt, Room* r, Direction d)
 {
 	if(dt == NULL)
 		return;
-
+    
 	switch(dt->getType())
 	{
-	case DungeonTile::CLEAR:
-		if(r->addTile(dt))
-		{
-			mUnvisitedTiles.remove(dt);
-			for(int i = NORTH; i < DIRECTION_COUNT; i++)
-			{	
-				switch(i)
-				{
-				case NORTH:
-					if(static_cast<Direction>(i) != SOUTH)
-						exploreTile(mGrid->getTile(dt->getX(), dt->getY() +1),r,NORTH);
-					break;
-
-				case SOUTH:
-					if(static_cast<Direction>(i) != NORTH)
-						exploreTile(mGrid->getTile(dt->getX(), dt->getY() -1),r,SOUTH);
-					break;
-
-				case WEST:				
-					if(static_cast<Direction>(i) != EAST)
-						exploreTile(mGrid->getTile(dt->getX()+1, dt->getY()),r,WEST);
-					break;
-
-				case EAST:
-					if(static_cast<Direction>(i) != WEST)
-						exploreTile(mGrid->getTile(dt->getX()-1, dt->getY() ),r,EAST);
-					break;
-
-				default:
-					break;
-				}
-			}
-		}
-		break;
-
-	case DungeonTile::WALL:
-		mUnvisitedTiles.remove(dt);
-		mVisitedWalls.push_front(dt);
-		break;
-
-	default:
-		break;
+        case DungeonTile::CLEAR:
+            if(r->addTile(dt))
+            {
+                mUnvisitedTiles.remove(dt);
+                for(int i = NORTH; i < DIRECTION_COUNT; i++)
+                {
+                    switch(i)
+                    {
+                        case NORTH:
+                            if(static_cast<Direction>(i) != SOUTH)
+                                exploreTile(mGrid->getTile(dt->getX(), dt->getY() +1),r,NORTH);
+                            break;
+                            
+                        case SOUTH:
+                            if(static_cast<Direction>(i) != NORTH)
+                                exploreTile(mGrid->getTile(dt->getX(), dt->getY() -1),r,SOUTH);
+                            break;
+                            
+                        case WEST:
+                            if(static_cast<Direction>(i) != EAST)
+                                exploreTile(mGrid->getTile(dt->getX()+1, dt->getY()),r,WEST);
+                            break;
+                            
+                        case EAST:
+                            if(static_cast<Direction>(i) != WEST)
+                                exploreTile(mGrid->getTile(dt->getX()-1, dt->getY() ),r,EAST);
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                }
+            }
+            break;
+            
+        case DungeonTile::WALL:
+            mUnvisitedTiles.remove(dt);
+            mVisitedWalls.push_front(dt);
+            break;
+            
+        default:
+            break;
 	}
 }

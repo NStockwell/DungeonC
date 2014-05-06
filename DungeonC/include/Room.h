@@ -24,7 +24,7 @@ public:
 
 	DungeonTile* getEasternTileAtLine(int line);
 	DungeonTile* getWesternTileAtLine(int line);
-	DungeonTile* getSoutherTileAtColumn(int column);
+	DungeonTile* getSouthernTileAtColumn(int column);
 	DungeonTile* getNorthernTileAtColumn(int column);
 
 
