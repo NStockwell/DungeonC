@@ -26,6 +26,7 @@ private:
     
     Grid gameOfLife(Grid* g);
     void translate(Grid *g,  char* byteArray);
+    void surroundByWall(Grid* g);
     
 };
 

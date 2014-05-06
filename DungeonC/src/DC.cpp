@@ -25,6 +25,9 @@ DC::DC(int width, int height, int iterations, string path)
 		mGrid.print();
 	}
 
+    surroundByWall(&mGrid);
+    mGrid.print();
+    
 	RoomManager* rm = new RoomManager(&mGrid);
 	rm->findRooms();
 }
@@ -109,4 +112,20 @@ Grid DC::gameOfLife(Grid* g)
 	return newGrid;
 }
 
+void DC::surroundByWall(Grid* g)
+{
+    int width = g->getWidth();
+    int height = g->getHeight();
+    
+    for(int i = 0; i < width; i ++)
+    {
+        g->setTileType(i, 0, DungeonTile::WALL);
+        g->setTileType(i, height-1, DungeonTile::WALL);
+    }
+    for(int i = 0; i < height; i++)
+    {
+        g->setTileType(0, i, DungeonTile::WALL);
+        g->setTileType(width-1, i, DungeonTile::WALL);
+    }
+}
 
