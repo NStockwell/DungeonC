@@ -38,12 +38,14 @@ void DC::translate(Grid *g,  char* byteArray)
 	int index = 0;
 	int inc = 1;
 	int byteArrayIndex = 0;
+    int anotherIndex = 0;
 	char currentByte = byteArray[0];
     int offset = 0;
     while(true)
     {
         if(currentByte == '\0' || byteArrayIndex < 0)
         {
+            
 			if(inc > 0)
             {
 				byteArrayIndex--;// = strlen(byteArray) - 1 ;
@@ -52,14 +54,15 @@ void DC::translate(Grid *g,  char* byteArray)
 			{
 				byteArrayIndex = 0;
 			}
+            anotherIndex = 0;
 			currentByte = byteArray[byteArrayIndex];
 			inc *= -1;
-			offset = index;
+			offset = index*2;
         }
 		int mask = 1;
 		for(int i = 0; i < 8; i++)
 		{
-			index = 8*byteArrayIndex + i + offset;
+			index = 8*anotherIndex + i + offset;
 			int gridX = (int)(index % g->getWidth());
 			int gridY = (int)(index / g->getWidth());
 			
@@ -72,6 +75,7 @@ void DC::translate(Grid *g,  char* byteArray)
 			mask = mask << 1;
 		}
 		byteArrayIndex += inc;
+        anotherIndex++;
 		currentByte = byteArray[byteArrayIndex];
 	}
 }
