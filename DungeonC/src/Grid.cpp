@@ -66,7 +66,7 @@ int Grid::getWidth(){return mWidth;}
 int Grid::getHeight(){return mHeight;}
 void Grid::setTileType(int x, int y, DungeonTile::TileType newType)
 {
-	mTiles.at(y).at(x)->setType(newType);
+	mTiles.at(x).at(y)->setType(newType);
 }
 
 	

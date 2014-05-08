@@ -12,7 +12,7 @@
 
 int main(int argc, const char * argv[])
 {
-    DC mDC = DC(50,50,25,"/Users/nunomoreira/MyGit/DungeonC/DungeonC/dungeonMac.txt");
+    DC mDC = DC(50,50,6,"/Users/nunomoreira/MyGit/DungeonC/DungeonC/dungeonMac2.txt");
     
     // insert code here...
     std::cout << "Hello, World!\n";
