@@ -18,6 +18,7 @@ class Room
 public:
 	Room(int id);
 	int getId();
+	void setId(int roomId);
 	bool addTile(DungeonTile* dt);
 	void removeTile(DungeonTile* dt);
 	bool isEmpty();
@@ -27,11 +28,19 @@ public:
 	DungeonTile* getSouthernTileAtColumn(int column);
 	DungeonTile* getNorthernTileAtColumn(int column);
 
+	int getNorthLimit();
+	int getSouthLimit();
+	int getWestLimit();
+	int getEastLimit();
 
 
 private:
 	int mId;
 	vector<DungeonTile*> mTiles;
+	int mNorthLimit;
+	int mSouthLimit;
+	int mWestLimit;
+	int mEastLimit;
 
 };
 

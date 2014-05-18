@@ -29,6 +29,15 @@ void DungeonTile::setType(TileType type)
 	mType = type;
 }
 
+void DungeonTile::setRoomId(int room)
+{
+	mRoomId = room;
+}
+int DungeonTile::getRoomId()
+{
+	return mRoomId;
+}
+
 void DungeonTile::print(FILE* f)
 {
 	switch (mType)

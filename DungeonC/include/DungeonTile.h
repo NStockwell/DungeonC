@@ -31,6 +31,8 @@ public:
 	void setType(TileType type);
 	void print(FILE* f);
 
+	void setRoomId(int room);
+	int getRoomId();
 	
 	bool isEqual(DungeonTile* dt1);
 
@@ -38,6 +40,7 @@ private:
 	int mX;
 	int mY;
 	TileType mType;
+	int mRoomId;
 };
 
 #endif

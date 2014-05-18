@@ -7,18 +7,36 @@
 //
 
 #include "Room.h"
+#include <limits>
 using namespace std;
 
 Room::Room(int id)
 {
 	mId = id;
 	mTiles = vector<DungeonTile*>();
+	mNorthLimit = INT_MAX;
+	mSouthLimit = INT_MIN;
+	mEastLimit = INT_MIN;
+	mWestLimit = INT_MAX;
 }
 
 int Room::getId()
 {
 	return mId;
-};
+}
+
+void Room::setId(int roomId)
+{
+	if(roomId == mId)
+		return;
+
+	mId = roomId;
+
+	for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
+	{ 
+		(*it)->setRoomId(roomId);
+	}
+}
 
 bool  Room::addTile(DungeonTile* dt)
 {
@@ -28,6 +46,19 @@ bool  Room::addTile(DungeonTile* dt)
 			return false;
 	}
 	mTiles.push_back(dt);
+
+	if(dt->getX() > mEastLimit)
+		mEastLimit = dt->getX();
+	if(dt->getX() < mWestLimit)
+		mWestLimit = dt->getX();
+
+	if(dt->getY() > mSouthLimit)
+		mSouthLimit = dt->getY();
+	if(dt->getY() < mNorthLimit)
+		mNorthLimit = dt->getY();
+	
+	dt->setRoomId(mId);
+
 	return true;
 }
 void  Room::removeTile(DungeonTile* dt)
@@ -39,6 +70,12 @@ bool Room::isEmpty()
 {
 	return mTiles.empty();
 }
+
+
+int Room::getNorthLimit() { return mNorthLimit;}
+int Room::getSouthLimit() {return mSouthLimit;}
+int Room::getWestLimit() {return mWestLimit;}
+int Room::getEastLimit() {return mEastLimit;}
 
 DungeonTile*  Room::getEasternTileAtLine(int line)
 {
