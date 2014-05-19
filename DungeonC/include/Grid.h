@@ -18,6 +18,7 @@ public:
 	int getWidth();
 	int getHeight();
 	void setTileType(int x, int y, DungeonTile::TileType newType);
+	void setTileTypeMod(int x, int y, DungeonTile::TileType newType);
 	DungeonTile::TileType getTileType(int x, int y);
 	DungeonTile* getTile(int x, int y);
 

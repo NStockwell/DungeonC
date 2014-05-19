@@ -15,8 +15,8 @@ DC::DC(int width, int height, int iterations, string path)
 	mGrid.print();
 	
 	//translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
-	//translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
-	translate(&mGrid,"Heróis do mar nobre povo nação valente imortal, levantai hoje de novo o esplendor de Portugal");
+	translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
+	//translate(&mGrid,"Heróis do mar nobre povo nação valente imortal, levantai hoje de novo o esplendor de Portugal");
 	
 	mGrid.print();
 	for(int i = 0; i < iterations; i++)
@@ -110,16 +110,16 @@ Grid DC::gameOfLife(Grid* g)
             {
             
                 if(livingNeighbours < 4 || livingNeighbours > 8)
-                    newGrid.setTileType(i, j,DungeonTile::CLEAR);
+                    newGrid.setTileTypeMod(i, j,DungeonTile::CLEAR);
                 else
-                    newGrid.setTileType(i, j, DungeonTile::WALL);
+                    newGrid.setTileTypeMod(i, j, DungeonTile::WALL);
             }
             else
             {
                 if(livingNeighbours >= 5)
-                    newGrid.setTileType(i,j, DungeonTile::WALL);
+                    newGrid.setTileTypeMod(i,j, DungeonTile::WALL);
                 else
-                    newGrid.setTileType(i,j, DungeonTile::CLEAR);
+                    newGrid.setTileTypeMod(i,j, DungeonTile::CLEAR);
             }
 		}
 	}
