@@ -22,11 +22,14 @@ public:
 	bool addTile(DungeonTile* dt);
 	void removeTile(DungeonTile* dt);
 	bool isEmpty();
+	void clearTiles();
 
 	DungeonTile* getEasternTileAtLine(int line);
 	DungeonTile* getWesternTileAtLine(int line);
 	DungeonTile* getSouthernTileAtColumn(int column);
 	DungeonTile* getNorthernTileAtColumn(int column);
+	
+	vector<DungeonTile*> getTiles();
 
 	int getNorthLimit();
 	int getSouthLimit();

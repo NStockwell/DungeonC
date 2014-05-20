@@ -38,6 +38,16 @@ void Room::setId(int roomId)
 	}
 }
 
+void Room::clearTiles()
+{
+	mTiles.clear();
+}
+
+vector<DungeonTile*> Room::getTiles()
+{
+	return mTiles;
+}
+
 bool  Room::addTile(DungeonTile* dt)
 {
 	for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
