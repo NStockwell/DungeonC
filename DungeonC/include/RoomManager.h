@@ -29,8 +29,8 @@ public:
 	RoomManager(Grid* g);
 	void findRooms();
 	void exploreTile(DungeonTile* dt, Room* r, Direction d);
-	void expandRooms();
-	void expandRoom(Room* r, int range);
+	bool expandRooms();
+	bool expandRoom(Room* r, int range);
 	void connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile);
 private:
 	Grid* mGrid;

@@ -91,16 +91,50 @@ void RoomManager::exploreTile(DungeonTile* dt, Room* r, Direction d)
 }
 
 
-void RoomManager::expandRooms()
+bool RoomManager::expandRooms()
 {
+	bool expandedAtLeastOneRoom = false;
 	for each(Room* r in mRooms)
 	{
-		expandRoom(r, 2);
+		expandedAtLeastOneRoom = expandRoom(r, 2) | expandedAtLeastOneRoom;
 	}
+
+	if(expandedAtLeastOneRoom)
+	{
+		for each(Room* r in mRooms)
+		{	
+			for each(Room* r2 in mRooms)
+			{
+				if(r2->getId() == r->getId() && r != r2)
+				{
+					vector<DungeonTile*> addTilesToOriginalRoom = r2->getTiles();
+					for(int i = 0; i < addTilesToOriginalRoom.size(); i++)
+					{
+						r->addTile(addTilesToOriginalRoom.at(i));
+					}
+					r2->clearTiles();
+				}
+			}
+		}
+
+		vector<Room*> newRooms = vector<Room*>();
+		for each(Room* r in mRooms)
+		{
+			if(!r->isEmpty())
+			{
+				newRooms.push_back(r);
+			}
+		}
+		mRooms.clear();
+		mRooms = newRooms;
+	}
+	return expandedAtLeastOneRoom;
 }
 
-void RoomManager::expandRoom(Room* r, int range)
+bool RoomManager::expandRoom(Room* r, int range)
 {
+	bool expandedThisRoom = false;
+
 	int westLimit = r->getWestLimit();
 	int eastLimit = r->getEastLimit();
 	int northLimit = r->getNorthLimit();
@@ -110,116 +144,151 @@ void RoomManager::expandRoom(Room* r, int range)
 
 	for(int i = westLimit;  i <= eastLimit; i++)
 	{
-		DungeonTile* dtN = r->getNorthernTileAtColumn(i);
-		int checkingNorthIndex = dtN->getY() - range;
-		DungeonTile* checkingNorthernTile = mGrid->getTile(i, checkingNorthIndex);
 		bool found = false;
-		if(checkingNorthernTile)
+		DungeonTile* dtN = r->getNorthernTileAtColumn(i);
+		if(dtN != NULL)
 		{
-			if(checkingNorthernTile->getType() != DungeonTile::WALL)
-			{
-				for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-				{
-					if(k == checkingNorthernTile->getRoomId())
-					{
-						found = true;
-						break;
-					}
-				}
 
-				if(!found)
+			int checkingNorthIndex = dtN->getY() - range;
+			DungeonTile* checkingNorthernTile = mGrid->getTile(i, checkingNorthIndex);
+			if(checkingNorthernTile)
+			{
+				if(checkingNorthernTile->getType() != DungeonTile::WALL  && checkingNorthernTile->getRoomId() != dtN->getRoomId())
 				{
-					r->addTile(mGrid->getTile(i,checkingNorthernTile->getY()+1));
-					mGrid->getTile(i, checkingNorthernTile->getY()+1)->setType(DungeonTile::CLEAR);
-					roomsToMerge.push_back(checkingNorthernTile->getRoomId());
+					for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+					{
+						if(k == checkingNorthernTile->getRoomId())
+						{
+							found = true;
+							break;
+						}
+					}
+
+					if(!found)
+					{
+						DungeonTile* wallTile = mGrid->getTile(i,checkingNorthernTile->getY()+1);
+						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingNorthernTile->getRoomId()))
+						{
+							r->addTile(wallTile);
+							wallTile->setType(DungeonTile::CLEAR);
+							roomsToMerge.push_back(checkingNorthernTile->getRoomId());
+
+							expandedThisRoom = true;
+						}
+					}
 				}
 			}
 		}
-		 
+
 		found = false;
 		DungeonTile* dtS = r->getSouthernTileAtColumn(i);
-		int checkingSIndex = dtS->getY() + range;
-		DungeonTile* checkingSTile = mGrid->getTile(i, checkingSIndex);
-		if(checkingSTile)
+		if(dtS != NULL)
 		{
-			if(checkingSTile->getType() != DungeonTile::WALL)
+			int checkingSIndex = dtS->getY() + range;
+			DungeonTile* checkingSTile = mGrid->getTile(i, checkingSIndex);
+			if(checkingSTile)
 			{
-				for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+				if(checkingSTile->getType() != DungeonTile::WALL  && checkingSTile->getRoomId() != dtS->getRoomId())
 				{
-					if(k == checkingSTile->getRoomId())
+					for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
 					{
-						found = true;
-						break;
+						if(k == checkingSTile->getRoomId())
+						{
+							found = true;
+							break;
+						}
 					}
-				}
 
-				if(!found)
-				{
-					r->addTile(mGrid->getTile(i,checkingSTile->getY()-1));
-					mGrid->getTile(i, checkingSTile->getY()-1)->setType(DungeonTile::CLEAR);
-					roomsToMerge.push_back(checkingSTile->getRoomId());
+					if(!found)
+					{
+						DungeonTile* wallTile = mGrid->getTile(i,checkingSTile->getY()-1);
+						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingSTile->getRoomId()))
+						{
+
+						r->addTile(wallTile);
+						wallTile->setType(DungeonTile::CLEAR);
+						roomsToMerge.push_back(checkingSTile->getRoomId());
+						expandedThisRoom = true;
+						}
+					}
 				}
 			}
 		}
-
 	}
 
 
-	
+
 	for(int i = northLimit;  i <= southLimit; i++)
 	{
-		DungeonTile* dtW = r->getWesternTileAtLine(i);
-		int checkingWIndex = dtW->getX() - range;
-		DungeonTile* checkingWTile = mGrid->getTile(checkingWIndex,i );
-		bool found = false;
-		if(checkingWTile)
-		{
-			if(checkingWTile->getType() != DungeonTile::WALL)
-			{
-				for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-				{
-					if(k == checkingWTile->getRoomId())
-					{
-						found = true;
-						break;
-					}
-				}
 
-				if(!found)
+		bool found = false;
+		DungeonTile* dtW = r->getWesternTileAtLine(i);
+		if(dtW != NULL)
+		{
+			int checkingWIndex = dtW->getX() - range;
+			DungeonTile* checkingWTile = mGrid->getTile(checkingWIndex,i );
+			if(checkingWTile)
+			{
+				if(checkingWTile->getType() != DungeonTile::WALL && checkingWTile->getRoomId() != dtW->getRoomId())
 				{
-					r->addTile(mGrid->getTile(checkingWTile->getY()+1,i)); // connection between the two diff rooms
-					mGrid->getTile(checkingWTile->getY()+1,i)->setType(DungeonTile::CLEAR); // clear the connection
-					roomsToMerge.push_back(checkingWTile->getRoomId());
+					for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+					{
+						if(k == checkingWTile->getRoomId())
+						{
+							found = true;
+							break;
+						}
+					}
+
+					if(!found)
+					{
+						DungeonTile* wallTile = mGrid->getTile(checkingWTile->getY()+1,i);
+						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingWTile->getRoomId()))
+						{
+
+						r->addTile(wallTile); // connection between the two diff rooms
+						wallTile->setType(DungeonTile::CLEAR); // clear the connection
+						roomsToMerge.push_back(checkingWTile->getRoomId());
+						expandedThisRoom = true;
+						}
+					}
 				}
 			}
 		}
-		 
+
 		found = false;
 		DungeonTile* dtE = r->getEasternTileAtLine(i);
-		int checkingEIndex = dtE->getX() + range;
-		DungeonTile* checkingETile = mGrid->getTile(i, checkingEIndex);
-		if(checkingETile)
+		if(dtE != NULL)
 		{
-			if(checkingETile->getType() != DungeonTile::WALL)
+			int checkingEIndex = dtE->getX() + range;
+			DungeonTile* checkingETile = mGrid->getTile(i, checkingEIndex);
+			if(checkingETile)
 			{
-				for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+				if(checkingETile->getType() != DungeonTile::WALL  && checkingETile->getRoomId() != dtE->getRoomId())
 				{
-					if(k == checkingETile->getRoomId())
+					for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
 					{
-						found = true;
-						break;
+						if(k == checkingETile->getRoomId())
+						{
+							found = true;
+							break;
+						}
 					}
-				}
 
-				if(!found)
-				{
-					r->addTile(mGrid->getTile(checkingETile->getY()-1,i));
-					mGrid->getTile(checkingETile->getY()-1, i)->setType(DungeonTile::CLEAR);
-					roomsToMerge.push_back(checkingETile->getRoomId());
+					if(!found)
+					{
+						DungeonTile* wallTile = mGrid->getTile(checkingETile->getY()-1,i);
+						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingETile->getRoomId()))
+						{
+						r->addTile(wallTile);
+						wallTile->setType(DungeonTile::CLEAR);
+						roomsToMerge.push_back(checkingETile->getRoomId());
+						expandedThisRoom = true;
+						}
+					}
 				}
 			}
 		}
-
 	}
 
 	for each(int roomId in roomsToMerge)
@@ -235,6 +304,8 @@ void RoomManager::expandRoom(Room* r, int range)
 			}
 		}
 	}
+
+	return expandedThisRoom;
 
 }
 
