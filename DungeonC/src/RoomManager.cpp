@@ -12,6 +12,7 @@ RoomManager::RoomManager(Grid* g)
 {
 	mGrid = g;
 	mRooms = vector<Room*>();
+    mMergedRooms = vector<MergedRooms>();
 	
 	for(int i = 0; i < mGrid->getHeight(); i++)
 	{
@@ -93,6 +94,8 @@ void RoomManager::exploreTile(DungeonTile* dt, Room* r, Direction d)
 
 bool RoomManager::expandRooms()
 {
+    
+    mMergedRooms.clear();
 	bool expandedAtLeastOneRoom = false;
     for(int i = 0; i < mRooms.size(); i++)
     {
@@ -141,8 +144,6 @@ bool RoomManager::expandRooms()
 				newRooms.push_back(r);
 			}
 		}
-        if(mRooms.size() == newRooms.size())
-            return expandedAtLeastOneRoom;
         
 		mRooms.clear();
 		mRooms = newRooms;
@@ -174,18 +175,30 @@ bool RoomManager::expandRoom(Room* r, int range)
 			{
 				if(checkingNorthernTile->getType() != DungeonTile::WALL  && checkingNorthernTile->getRoomId() != dtN->getRoomId())
 				{
-                    for(int i = 0; i < roomsToMerge.size(); i++)
+                    for(int i = 0; i < mMergedRooms.size(); i++) // check the merged rooms so we don't merge room 1 to room 2 after we have added room 2 into room 1
                     {
-                        int k = roomsToMerge.at(i);
-                        //  for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-                        //{
-						if(k == checkingNorthernTile->getRoomId())
-						{
-							found = true;
-							break;
-						}
-					}
-                    
+                        MergedRooms mr = mMergedRooms.at(i);
+                        if((mr.roomA == r->getId() && mr.roomB == checkingNorthernTile->getRoomId()) || (mr.roomB == r->getId()
+                                                                                                         && checkingNorthernTile->getRoomId() == mr.roomA))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        for(int i = 0; i < roomsToMerge.size(); i++)
+                        {
+                            int k = roomsToMerge.at(i);
+                            //  for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+                            //{
+                            if(k == checkingNorthernTile->getRoomId())
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
 					if(!found)
 					{
 						DungeonTile* wallTile = mGrid->getTile(i,checkingNorthernTile->getY()+1);
@@ -212,18 +225,30 @@ bool RoomManager::expandRoom(Room* r, int range)
 			{
 				if(checkingSTile->getType() != DungeonTile::WALL  && checkingSTile->getRoomId() != dtS->getRoomId())
 				{
-                    
-					for(int i = 0; i < roomsToMerge.size(); i++)
+                    for(int i = 0; i < mMergedRooms.size(); i++) // check the merged rooms so we don't merge room 1 to room 2 after we have added room 2 into room 1
                     {
-                        int k = roomsToMerge.at(i);
-                        //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-                        //{
-						if(k == checkingSTile->getRoomId())
-						{
-							found = true;
-							break;
-						}
-					}
+                        MergedRooms mr = mMergedRooms.at(i);
+                        if((mr.roomA == r->getId() && mr.roomB == checkingSTile->getRoomId()) || (mr.roomB == r->getId()
+                                                                                                  && checkingSTile->getRoomId() == mr.roomA))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        for(int i = 0; i < roomsToMerge.size(); i++)
+                        {
+                            int k = roomsToMerge.at(i);
+                            //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+                            //{
+                            if(k == checkingSTile->getRoomId())
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
                     
 					if(!found)
 					{
@@ -257,17 +282,30 @@ bool RoomManager::expandRoom(Room* r, int range)
 			{
 				if(checkingWTile->getType() != DungeonTile::WALL && checkingWTile->getRoomId() != dtW->getRoomId())
 				{
-                    for(int i = 0; i < roomsToMerge.size(); i++)
+                    for(int i = 0; i < mMergedRooms.size(); i++) // check the merged rooms so we don't merge room 1 to room 2 after we have added room 2 into room 1
                     {
-                        int k = roomsToMerge.at(i);
-                        //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-                        //{
-						if(k == checkingWTile->getRoomId())
-						{
-							found = true;
-							break;
-						}
-					}
+                        MergedRooms mr = mMergedRooms.at(i);
+                        if((mr.roomA == r->getId() && mr.roomB == checkingWTile->getRoomId()) || (mr.roomB == r->getId()
+                                                                                                  && checkingWTile->getRoomId() == mr.roomA))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        for(int i = 0; i < roomsToMerge.size(); i++)
+                        {
+                            int k = roomsToMerge.at(i);
+                            //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+                            //{
+                            if(k == checkingWTile->getRoomId())
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
                     
 					if(!found)
 					{
@@ -295,17 +333,31 @@ bool RoomManager::expandRoom(Room* r, int range)
 			{
 				if(checkingETile->getType() != DungeonTile::WALL  && checkingETile->getRoomId() != dtE->getRoomId())
 				{
-                    for(int i = 0; i < roomsToMerge.size(); i++)
+                    for(int i = 0; i < mMergedRooms.size(); i++) // check the merged rooms so we don't merge room 1 to room 2 after we have added room 2 into room 1
                     {
-                        int k = roomsToMerge.at(i);
-                        //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
-                        //{
-						if(k == checkingETile->getRoomId())
-						{
-							found = true;
-							break;
-						}
-					}
+                        MergedRooms mr = mMergedRooms.at(i);
+                        if((mr.roomA == r->getId() && mr.roomB == checkingETile->getRoomId()) || (mr.roomB == r->getId()
+                                                                                                  && checkingETile->getRoomId() == mr.roomA))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    if(!found)
+                    {
+                        for(int i = 0; i < roomsToMerge.size(); i++)
+                        {
+                            int k = roomsToMerge.at(i);
+                            //for each(int k in roomsToMerge) // find if the room is already on the rooms to merge
+                            //{
+                            if(k == checkingETile->getRoomId())
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
                     
 					if(!found)
 					{
@@ -329,6 +381,11 @@ bool RoomManager::expandRoom(Room* r, int range)
         //
         //for each(int roomId in roomsToMerge)
         //{
+        MergedRooms mr;
+        mr.roomA = r->getId();
+        mr.roomB = roomId;
+        
+        mMergedRooms.push_back(mr);
 		for(int j = 0; j < mRooms.size(); j++)
         {
             Room* room = mRooms.at(i);

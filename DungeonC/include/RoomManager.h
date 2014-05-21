@@ -23,6 +23,11 @@ typedef enum
 		DIRECTION_COUNT
 } Direction;
 
+struct MergedRooms {
+    int roomA;
+    int roomB;
+};
+
 class RoomManager
 {
 public:
@@ -37,6 +42,7 @@ private:
 	vector<Room*> mRooms;
 	list<DungeonTile*> mUnvisitedTiles;
 	list<DungeonTile*> mVisitedWalls;
+    vector<MergedRooms> mMergedRooms;
 };
 
 #endif
