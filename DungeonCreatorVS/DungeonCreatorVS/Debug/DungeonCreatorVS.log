@@ -1,4 +1,4 @@
-﻿Build started 20-05-2014 23:33:13.
+﻿Build started 21-05-2014 22:57:56.
      1>Project "C:\Users\NunoStockwell\Documents\GitHub\DungeonC\DungeonCreatorVS\DungeonCreatorVS\DungeonCreatorVS.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\DungeonCreatorVS.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -6,7 +6,33 @@
          All outputs are up-to-date.
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\DungeonC\include /I..\..\DungeonC\src /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\DungeonC\src\RoomManager.cpp
          RoomManager.cpp
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(100): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(111): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(117): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(126): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(136): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(178): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(190): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(204): warning C4258: 'i' : definition from the for loop is ignored; the definition from the enclosing scope is used
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(178) : definition of 'i' ignored
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(165) : definition of 'i' used
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(232): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(244): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(259): warning C4258: 'i' : definition from the for loop is ignored; the definition from the enclosing scope is used
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(232) : definition of 'i' ignored
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(165) : definition of 'i' used
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(293): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(305): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(320): warning C4258: 'i' : definition from the for loop is ignored; the definition from the enclosing scope is used
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(293) : definition of 'i' ignored
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(280) : definition of 'i' used
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(348): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(361): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(376): warning C4258: 'i' : definition from the for loop is ignored; the definition from the enclosing scope is used
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(348) : definition of 'i' ignored
+                 c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(280) : definition of 'i' used
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(394): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nunostockwell\documents\github\dungeonc\dungeonc\src\roommanager.cpp(405): warning C4018: '<' : signed/unsigned mismatch
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\NunoStockwell\Documents\GitHub\DungeonC\DungeonCreatorVS\Debug\DungeonCreatorVS.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\DungeonCreatorVS.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\NunoStockwell\Documents\GitHub\DungeonC\DungeonCreatorVS\Debug\DungeonCreatorVS.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\NunoStockwell\Documents\GitHub\DungeonC\DungeonCreatorVS\Debug\DungeonCreatorVS.lib" /MACHINE:X86 Debug\DC.obj
          Debug\DungeonTile.obj
@@ -26,4 +52,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.35
+Time Elapsed 00:00:01.58
