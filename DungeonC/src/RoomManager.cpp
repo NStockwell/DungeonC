@@ -108,7 +108,7 @@ bool RoomManager::expandRooms()
     
 	if(expandedAtLeastOneRoom)
 	{
-        for(int i = 0; i < mRooms.size(); i++)
+        for(int i = 0; i < mRooms.size(); i++) // merge rooms by finding 2 rooms with same room id but different pointers
         {
             Room* r = mRooms.at(i);
             //
@@ -132,6 +132,7 @@ bool RoomManager::expandRooms()
 			}
 		}
         
+        // create a new list removing the empty rooms
 		vector<Room*> newRooms = vector<Room*>();
         for(int i = 0; i < mRooms.size(); i++)
         {
@@ -204,7 +205,9 @@ bool RoomManager::expandRoom(Room* r, int range)
 						DungeonTile* wallTile = mGrid->getTile(i,checkingNorthernTile->getY()+1);
 						if(wallTile->getType() != DungeonTile::WALL)
 						{
-							cout << "UPS";
+							cout << "\nN_UPS " << wallTile->getRoomId() << " x:" << wallTile->getX() << " y:" << wallTile->getY();
+                            cout << "\nchecking "<< checkingNorthernTile->getRoomId() << " x:" << checkingNorthernTile->getX() << " y:" << checkingNorthernTile->getY();
+                            cout << "\n";
 						}
 						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingNorthernTile->getRoomId()))
 						{
@@ -259,7 +262,9 @@ bool RoomManager::expandRoom(Room* r, int range)
 						DungeonTile* wallTile = mGrid->getTile(i,checkingSTile->getY()-1);
 						if(wallTile->getType() != DungeonTile::WALL)
 						{
-							cout << "UPS";
+							cout << "\nS_UPS " << wallTile->getRoomId() << " x:" << wallTile->getX() << " y:" << wallTile->getY();
+                            cout << "\nchecking "<< checkingSTile->getRoomId() << " x:" << checkingSTile->getX() << " y:" << checkingSTile->getY();;
+                            cout << "\n";
 						}
 						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingSTile->getRoomId()))
 						{
@@ -320,7 +325,9 @@ bool RoomManager::expandRoom(Room* r, int range)
 						DungeonTile* wallTile = mGrid->getTile(checkingWTile->getX()+1,i);
 						if(wallTile->getType() != DungeonTile::WALL)
 						{
-							cout << "UPS";
+							cout << "\nW_UPS " << wallTile->getRoomId() << " x:" << wallTile->getX() << " y:" << wallTile->getY();
+                            cout << "\nchecking "<< checkingWTile->getRoomId() << " x:" << checkingWTile->getX() << " y:" << checkingWTile->getY();
+                            cout << "\n";
 						}
 						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingWTile->getRoomId()))
 						{
@@ -340,7 +347,7 @@ bool RoomManager::expandRoom(Room* r, int range)
 		if(dtE != NULL)
 		{
 			int checkingEIndex = dtE->getX() + range;
-			DungeonTile* checkingETile = mGrid->getTile(i, checkingEIndex);
+			DungeonTile* checkingETile = mGrid->getTile(checkingEIndex,i);
 			if(checkingETile)
 			{
 				if(checkingETile->getType() != DungeonTile::WALL  && checkingETile->getRoomId() != dtE->getRoomId())
@@ -376,7 +383,9 @@ bool RoomManager::expandRoom(Room* r, int range)
 						DungeonTile* wallTile = mGrid->getTile(checkingETile->getX()-1,i);
 						if(wallTile->getType() != DungeonTile::WALL)
 						{
-							cout << "UPS";
+							cout << "\nE_UPS " << wallTile->getRoomId() << " x:" << wallTile->getX() << " y:" << wallTile->getY();
+                            cout << "\nchecking "<< checkingETile->getRoomId() << " x:" << checkingETile->getX() << " y:" << checkingETile->getY();
+                            cout << "\n";
 						}
 						//if(wallTile->getType() == DungeonTile::WALL || (wallTile->getType() == DungeonTile::CLEAR && wallTile->getRoomId() != checkingETile->getRoomId()))
 						{

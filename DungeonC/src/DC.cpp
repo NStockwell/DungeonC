@@ -15,8 +15,8 @@ DC::DC(int width, int height, int iterations, string path)
 	mGrid.print();
 	
 	//translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
-	translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
-	//translate(&mGrid,"Heróis do mar nobre povo nação valente imortal, levantai hoje de novo o esplendor de Portugal");
+	//translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
+	translate(&mGrid,"Heróis do mar nobre povo nação valente imortal, levantai hoje de novo o esplendor de Portugal");
 	
 	mGrid.print();
 	for(int i = 0; i < iterations; i++)
@@ -31,9 +31,11 @@ DC::DC(int width, int height, int iterations, string path)
 	RoomManager* rm = new RoomManager(&mGrid);
 	rm->findRooms();
 	while(rm->expandRooms())
-	{}
+	{
+        mGrid.print();
+    }
 
-	mGrid.print();
+//	mGrid.print();
 }
 
 
