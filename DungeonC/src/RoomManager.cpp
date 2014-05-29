@@ -113,6 +113,7 @@ bool RoomManager::expandRooms()
                 Room* r2 = mRooms.at(i);
 				if(r2->getId() == r->getId() && r != r2)
 				{
+                    cout << "Joining Rooms " << r->getId() << " with room " << r2->getId();
 					vector<DungeonTile*> addTilesToOriginalRoom = r2->getTiles();
 					for(int i = 0; i < addTilesToOriginalRoom.size(); i++)
 					{
@@ -404,13 +405,14 @@ bool RoomManager::expandRoom(Room* r, int range)
         mMergedRooms.push_back(mr);
 		for(int j = 0; j < mRooms.size(); j++)
         {
-            Room* room = mRooms.at(i);
+            Room* room = mRooms.at(j);
            
 			if(room->getId() == r->getId())
 				continue;
 			
 			if(room->getId() == roomId)
 			{
+                cout<< "Setting room " << room->getId() << " to new id " << r->getId();
 				room->setId(r->getId());
 			}
 		}
