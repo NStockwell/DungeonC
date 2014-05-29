@@ -110,13 +110,13 @@ DungeonTile*  Room::getEasternTileAtLine(int line)
 DungeonTile*  Room::getWesternTileAtLine(int line)
 {
     DungeonTile* returnTile = NULL;
-    int westest = 0;
+    int westest = INT_MAX;
     for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
 	{
         if((*it)->getY() == line)
         {
             int xPos =(*it)->getX();
-            if(xPos > westest)
+            if(xPos < westest)
             {
                 westest = xPos;
                 returnTile = *it;
@@ -150,13 +150,13 @@ DungeonTile*  Room::getSouthernTileAtColumn(int column)
 DungeonTile* Room:: getNorthernTileAtColumn(int column)
 {
     DungeonTile* returnTile = NULL;
-    int northern = 0;
+    int northern = INT_MAX;
     for(vector<DungeonTile*>::iterator it = mTiles.begin(); it != mTiles.end(); it++)
 	{
         if((*it)->getX() == column)
         {
             int yPos =(*it)->getY();
-            if(yPos > northern)
+            if(yPos < northern)
             {
                 northern = yPos;
                 returnTile = *it;

@@ -100,7 +100,12 @@ bool RoomManager::expandRooms()
     for(int i = 0; i < mRooms.size(); i++)
     {
         Room* r = mRooms.at(i);
-		expandedAtLeastOneRoom = expandRoom(r, 2) | expandedAtLeastOneRoom;
+        bool expandedThisRoom = expandRoom(r, 2);
+        if(expandedThisRoom)
+        {
+            mGrid->print();
+        }
+		expandedAtLeastOneRoom = expandedThisRoom | expandedAtLeastOneRoom;
 	}
     
 	if(expandedAtLeastOneRoom)
@@ -113,7 +118,7 @@ bool RoomManager::expandRooms()
                 Room* r2 = mRooms.at(i);
 				if(r2->getId() == r->getId() && r != r2)
 				{
-                    cout << "Joining Rooms " << r->getId() << " with room " << r2->getId();
+                    cout << "\nJoining Rooms " << r->getId() << " with room " << r2->getId();
 					vector<DungeonTile*> addTilesToOriginalRoom = r2->getTiles();
 					for(int i = 0; i < addTilesToOriginalRoom.size(); i++)
 					{
