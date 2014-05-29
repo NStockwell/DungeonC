@@ -7,6 +7,7 @@
 //
 
 #include "DC.h"
+#include "md5.h"
 
 
 DC::DC(int width, int height, int iterations, string path)
@@ -47,12 +48,16 @@ void DC::translate(Grid *g,  char* byteArray)
 	int byteArrayIndex = 0;
 	char currentByte = byteArray[0];
     int offset = 0;
+    std::string s = std::string(byteArray);
+    currentByte = s.at(0);
     while(true)
     {
         if(currentByte == '\0')
         {
             byteArrayIndex = 0;
-            currentByte = byteArray[0];
+            s = md5(s);
+            currentByte = s.at(0);
+//            currentByte = byteArray[0];
             offset = index;
         }
 		int mask = 1;
@@ -70,7 +75,11 @@ void DC::translate(Grid *g,  char* byteArray)
 			}
 			mask = mask << 1;
 		}
-		currentByte = byteArray[++byteArrayIndex];
+        byteArrayIndex++;
+        if(s.length() == byteArrayIndex)
+            currentByte = '\0';
+        else
+            currentByte = s.at(byteArrayIndex);// byteArray[++byteArrayIndex];
 	}
 }
 

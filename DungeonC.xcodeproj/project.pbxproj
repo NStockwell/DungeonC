@@ -14,6 +14,7 @@
 		2E921F311906D5B30045A314 /* DC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E921F2D1906D5B30045A314 /* DC.cpp */; };
 		2E921F321906D5B30045A314 /* DungeonTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E921F2F1906D5B30045A314 /* DungeonTile.cpp */; };
 		2E921F331906D5B30045A314 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E921F301906D5B30045A314 /* Grid.cpp */; };
+		C5B3B0801937B1B40078E72E /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5B3B07E1937B1B40078E72E /* md5.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,8 @@
 		2E921F2E1906D5B30045A314 /* DC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DC.h; sourceTree = "<group>"; };
 		2E921F2F1906D5B30045A314 /* DungeonTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DungeonTile.cpp; sourceTree = "<group>"; };
 		2E921F301906D5B30045A314 /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
+		C5B3B07E1937B1B40078E72E /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		C5B3B07F1937B1B40078E72E /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				2E921F2E1906D5B30045A314 /* DC.h */,
 				2E921F2F1906D5B30045A314 /* DungeonTile.cpp */,
 				2E921F301906D5B30045A314 /* Grid.cpp */,
+				C5B3B07E1937B1B40078E72E /* md5.cpp */,
+				C5B3B07F1937B1B40078E72E /* md5.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 				2E921F201906D5650045A314 /* main.cpp in Sources */,
 				2E921F331906D5B30045A314 /* Grid.cpp in Sources */,
 				2E64C8EF19140F3000D7FDB7 /* RoomManager.cpp in Sources */,
+				C5B3B0801937B1B40078E72E /* md5.cpp in Sources */,
 				2E64C8EE19140F3000D7FDB7 /* Room.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
