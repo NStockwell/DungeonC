@@ -41,6 +41,7 @@ void Room::setId(int roomId)
 void Room::clearTiles()
 {
 	mTiles.clear();
+	mNorthLimit = mSouthLimit = mWestLimit = mEastLimit = -1;
 }
 
 vector<DungeonTile*> Room::getTiles()
