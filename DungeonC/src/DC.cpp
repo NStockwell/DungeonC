@@ -15,9 +15,10 @@ DC::DC(int width, int height, int iterations, string path)
     Grid mGrid = Grid(width,height,path);
 	mGrid.print();
 	
-	translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
+	//translate(&mGrid,"Hello! Is it me you're looking for? I can see it in your eyes I can see it in your smile");
 	//translate(&mGrid,"Never gonna give you up never gonna let you down never gonna run around and hurt you");
 	//translate(&mGrid,"Heróis do mar nobre povo nação valente imortal, levantai hoje de novo o esplendor de Portugal");
+	translate(&mGrid, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
 	
 	mGrid.print();
 	for(int i = 0; i < iterations; i++)

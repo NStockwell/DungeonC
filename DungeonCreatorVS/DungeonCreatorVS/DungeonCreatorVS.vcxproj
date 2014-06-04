@@ -82,6 +82,7 @@
     <ClInclude Include="..\..\DungeonC\include\RoomManager.h" />
     <ClInclude Include="..\..\DungeonC\include\Translator.h" />
     <ClInclude Include="..\..\DungeonC\src\DC.h" />
+    <ClInclude Include="..\..\DungeonC\src\md5.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -89,6 +90,7 @@
     <ClCompile Include="..\..\DungeonC\src\DC.cpp" />
     <ClCompile Include="..\..\DungeonC\src\DungeonTile.cpp" />
     <ClCompile Include="..\..\DungeonC\src\Grid.cpp" />
+    <ClCompile Include="..\..\DungeonC\src\md5.cpp" />
     <ClCompile Include="..\..\DungeonC\src\Room.cpp" />
     <ClCompile Include="..\..\DungeonC\src\RoomManager.cpp" />
     <ClCompile Include="DungeonCreatorVS.cpp" />
