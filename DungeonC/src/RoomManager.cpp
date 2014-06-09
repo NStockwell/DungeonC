@@ -547,7 +547,7 @@ void RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endT
         while (abs(xOffset) != abs(diffX))
         {
             xOffset++;
-            DungeonTile* newTile = mGrid->getTile((diffX < 0 ? x1 - xOffset : (diffX == 0 ? x1 : x1 + xOffset)),
+            DungeonTile* newTile = mGrid->getTile((diffX < 0 ? x1 - xOffset : /*(diffX == 0 ? x1 :*/ x1 + xOffset),
                                                   y1);
             newTile->setRoomId(startingRoomId);
             r->addTile(newTile);
@@ -558,7 +558,7 @@ void RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endT
         {
             yOffset++;
             DungeonTile* newTile = mGrid->getTile(x1,
-                                                  (diffY < 0 ? y1 - yOffset : (diffY == 0 ? y1 : y1 + yOffset)));
+                                                  (diffY < 0 ? y1 - yOffset : /*(diffY == 0 ? y1 :*/ y1 + yOffset));
             newTile->setRoomId(startingRoomId);
             r->addTile(newTile);
             newTile->setType(DungeonTile::CLEAR);
