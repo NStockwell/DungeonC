@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DungeonC/src/RoomManager.cpp"
-            timestampString = "423076677.925616"
+            timestampString = "424032871.437537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "RoomManager::expandRoom(Room* r, int range)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DungeonC/src/RoomManager.cpp"
-            timestampString = "423076677.925616"
+            timestampString = "424032871.437537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "RoomManager::expandRoom(Room* r, int range)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DungeonC/src/RoomManager.cpp"
-            timestampString = "423076677.925616"
+            timestampString = "424032871.437537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "RoomManager::expandRoom(Room* r, int range)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DungeonC/src/RoomManager.cpp"
-            timestampString = "423076677.925616"
+            timestampString = "424032871.437537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "RoomManager::expandRoom(Room* r, int range)"
             landmarkType = "5">
          </BreakpointContent>
@@ -144,6 +144,54 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "RoomManager::expandRooms()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DungeonC/src/RoomManager.cpp"
+            timestampString = "424032871.437537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "RoomManager::expandRoom(Room* r, int range)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DungeonC/src/RoomManager.cpp"
+            timestampString = "424032871.437537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
+            landmarkName = "RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile, Room* r)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DungeonC/src/RoomManager.cpp"
+            timestampString = "424032871.437537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
+            landmarkName = "RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile, Room* r)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

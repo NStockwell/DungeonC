@@ -36,7 +36,9 @@ public:
 	void exploreTile(DungeonTile* dt, Room* r, Direction d);
 	bool expandRooms();
 	bool expandRoom(Room* r, int range);
-	void connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile);
+	void connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile, Room* r);
+    bool checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToCheck, vector<int>*roomsToMerge, Room* r);
+
 private:
 	Grid* mGrid;
 	vector<Room*> mRooms;
