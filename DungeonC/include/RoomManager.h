@@ -34,7 +34,7 @@ public:
 	RoomManager(Grid* g);
 	void findRooms();
 	void exploreTile(DungeonTile* dt, Room* r, Direction d);
-	bool expandRooms();
+	bool expandRooms(int range);
 	bool expandRoom(Room* r, int range);
 	void connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile, Room* r);
     bool checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToCheck, vector<int>*roomsToMerge, Room* r);

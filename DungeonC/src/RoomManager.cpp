@@ -92,7 +92,7 @@ void RoomManager::exploreTile(DungeonTile* dt, Room* r, Direction d)
 }
 
 
-bool RoomManager::expandRooms()
+bool RoomManager::expandRooms(int range)
 {
     
     mMergedRooms.clear();
@@ -100,7 +100,7 @@ bool RoomManager::expandRooms()
     for(int i = 0; i < mRooms.size(); i++)
     {
         Room* r = mRooms.at(i);
-        bool expandedThisRoom = expandRoom(r, 2);
+        bool expandedThisRoom = expandRoom(r, range);
         if(expandedThisRoom)
         {
             mGrid->print();
@@ -118,7 +118,7 @@ bool RoomManager::expandRooms()
                 Room* r2 = mRooms.at(i);
 				if(r2->getId() == r->getId() && r != r2 && r2->getId() != -1 && r->getId()!= -1)
 				{
-                    cout << "\nJoining Rooms " << r->getId() << " with room " << r2->getId();
+                    //cout << "\nJoining Rooms " << r->getId() << " with room " << r2->getId();
 					vector<DungeonTile*> addTilesToOriginalRoom = r2->getTiles();
 					for(int i = 0; i < addTilesToOriginalRoom.size(); i++)
 					{
@@ -170,7 +170,7 @@ bool RoomManager::expandRoom(Room* r, int range)
             vecDT.push_back(mGrid->getTile(i, checkingNorthIndex));
             vecDT.push_back(mGrid->getTile(i+1, checkingNorthIndex));
             vecDT.push_back(mGrid->getTile(i-1, checkingNorthIndex));
-            expandedThisRoom = checkThisTile(dtN, vecDT, &roomsToMerge, r);
+            expandedThisRoom |= checkThisTile(dtN, vecDT, &roomsToMerge, r);
             /*
 			int checkingNorthIndex = dtN->getY() - range;
 			DungeonTile* checkingNorthernTile = mGrid->getTile(i, checkingNorthIndex);
@@ -236,7 +236,7 @@ bool RoomManager::expandRoom(Room* r, int range)
             vecDT.push_back(mGrid->getTile(i, checkingSIndex));
             vecDT.push_back(mGrid->getTile(i+1, checkingSIndex));
             vecDT.push_back(mGrid->getTile(i-1, checkingSIndex));
-            expandedThisRoom = checkThisTile(dtS, vecDT, &roomsToMerge, r);
+            expandedThisRoom |= checkThisTile(dtS, vecDT, &roomsToMerge, r);
             /*
 			int checkingSIndex = dtS->getY() + range;
 			DungeonTile* checkingSTile = mGrid->getTile(i, checkingSIndex);
@@ -309,7 +309,7 @@ bool RoomManager::expandRoom(Room* r, int range)
             vecDT.push_back(mGrid->getTile(checkingWIndex,i));
             vecDT.push_back(mGrid->getTile(checkingWIndex,i+1));
             vecDT.push_back(mGrid->getTile(checkingWIndex,i-1));
-            expandedThisRoom = checkThisTile(dtW, vecDT, &roomsToMerge, r);
+            expandedThisRoom |= checkThisTile(dtW, vecDT, &roomsToMerge, r);
 			/*
              if(checkingWTile)
 			{
@@ -374,7 +374,7 @@ bool RoomManager::expandRoom(Room* r, int range)
             vecDT.push_back(mGrid->getTile(checkingEIndex,i+1));
             vecDT.push_back(mGrid->getTile(checkingEIndex,i-1));
             
-            expandedThisRoom = checkThisTile(dtE, vecDT, &roomsToMerge, r);
+            expandedThisRoom |= checkThisTile(dtE, vecDT, &roomsToMerge, r);
             /*
 			int checkingEIndex = dtE->getX() + range;
 			DungeonTile* checkingETile = mGrid->getTile(checkingEIndex,i);
@@ -450,7 +450,7 @@ bool RoomManager::expandRoom(Room* r, int range)
 			
 			if(room->getId() == roomId)
 			{
-                cout<< "Setting room " << room->getId() << " to new id " << r->getId();
+                //cout<< "Setting room " << room->getId() << " to new id " << r->getId();
 				room->setId(r->getId());
 			}
 		}
@@ -512,8 +512,8 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
 						}
                          */
                         
-                        cout << "\n MERGING S ROOMS:" << r->getId() << " and room:" << checkingTile->getRoomId();
-                        cout.flush();
+                        //cout << "\n MERGING S ROOMS:" << r->getId() << " and room:" << checkingTile->getRoomId();
+                        //cout.flush();
                         
                         roomsToMerge->push_back(checkingTile->getRoomId());
                         connectTheseTiles(dT, checkingTile, r);

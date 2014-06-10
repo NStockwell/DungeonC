@@ -32,14 +32,22 @@ DC::DC(int width, int height, int iterations, string path)
     
 	RoomManager* rm = new RoomManager(&mGrid);
 	rm->findRooms();
-	while(rm->expandRooms())
+	while(rm->expandRooms(2))
 	{
         mGrid.print();
     }
 
-    
-    rm->expandRooms();
+	while(rm->expandRooms(3))
+	{
+        mGrid.print();
+    }
+
+    /*
+    rm->expandRooms(2);
 	mGrid.print();
+	rm->expandRooms(3);
+	mGrid.print();
+	*/
 }
 
 
