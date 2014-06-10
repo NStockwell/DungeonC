@@ -116,7 +116,7 @@ bool RoomManager::expandRooms()
             for(int i = 0; i < mRooms.size(); i++)
             {
                 Room* r2 = mRooms.at(i);
-				if(r2->getId() == r->getId() && r != r2)
+				if(r2->getId() == r->getId() && r != r2 && r2->getId() != -1 && r->getId()!= -1)
 				{
                     cout << "\nJoining Rooms " << r->getId() << " with room " << r2->getId();
 					vector<DungeonTile*> addTilesToOriginalRoom = r2->getTiles();
@@ -168,6 +168,8 @@ bool RoomManager::expandRoom(Room* r, int range)
             
 			int checkingNorthIndex = dtN->getY() - range;
             vecDT.push_back(mGrid->getTile(i, checkingNorthIndex));
+            vecDT.push_back(mGrid->getTile(i+1, checkingNorthIndex));
+            vecDT.push_back(mGrid->getTile(i-1, checkingNorthIndex));
             expandedThisRoom = checkThisTile(dtN, vecDT, &roomsToMerge, r);
             /*
 			int checkingNorthIndex = dtN->getY() - range;
@@ -232,6 +234,8 @@ bool RoomManager::expandRoom(Room* r, int range)
             
 			int checkingSIndex = dtS->getY() + range;
             vecDT.push_back(mGrid->getTile(i, checkingSIndex));
+            vecDT.push_back(mGrid->getTile(i+1, checkingSIndex));
+            vecDT.push_back(mGrid->getTile(i-1, checkingSIndex));
             expandedThisRoom = checkThisTile(dtS, vecDT, &roomsToMerge, r);
             /*
 			int checkingSIndex = dtS->getY() + range;
@@ -303,6 +307,8 @@ bool RoomManager::expandRoom(Room* r, int range)
 
 			int checkingWIndex = dtW->getX() - range;
             vecDT.push_back(mGrid->getTile(checkingWIndex,i));
+            vecDT.push_back(mGrid->getTile(checkingWIndex,i+1));
+            vecDT.push_back(mGrid->getTile(checkingWIndex,i-1));
             expandedThisRoom = checkThisTile(dtW, vecDT, &roomsToMerge, r);
 			/*
              if(checkingWTile)
@@ -365,6 +371,8 @@ bool RoomManager::expandRoom(Room* r, int range)
             
 			int checkingEIndex = dtE->getX() + range;
             vecDT.push_back(mGrid->getTile(checkingEIndex,i));
+            vecDT.push_back(mGrid->getTile(checkingEIndex,i+1));
+            vecDT.push_back(mGrid->getTile(checkingEIndex,i-1));
             
             expandedThisRoom = checkThisTile(dtE, vecDT, &roomsToMerge, r);
             /*
@@ -460,7 +468,6 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
 
     if(dT != NULL)
     {
-        //int checkingSIndex = dT->getY() + range;
         for(int i= 0; i < tilesToCheck.size(); i++)
         {
             DungeonTile* checkingTile = tilesToCheck.at(i);
@@ -492,7 +499,8 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
                     }
                     
                     if(!found) // connect the rooms
-                    {
+					
+					{
                         
                         /*
                         DungeonTile* wallTile = mGrid->getTile(i,checkingTile->getY()-1);
@@ -503,8 +511,6 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
                             cout << "\n";
 						}
                          */
-                        
-						
                         
                         cout << "\n MERGING S ROOMS:" << r->getId() << " and room:" << checkingTile->getRoomId();
                         cout.flush();
@@ -547,9 +553,9 @@ void RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endT
         while (abs(xOffset) != abs(diffX))
         {
             xOffset++;
-            DungeonTile* newTile = mGrid->getTile((diffX < 0 ? x1 - xOffset : /*(diffX == 0 ? x1 :*/ x1 + xOffset),
+            DungeonTile* newTile = mGrid->getTile((diffX < 0 ? x1 - xOffset : x1 + xOffset),
                                                   y1);
-            newTile->setRoomId(startingRoomId);
+            //newTile->setRoomId(startingRoomId);
             r->addTile(newTile);
             newTile->setType(DungeonTile::CLEAR);
             
@@ -557,9 +563,9 @@ void RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endT
         if(abs(yOffset) != abs(diffY) )
         {
             yOffset++;
-            DungeonTile* newTile = mGrid->getTile(x1,
-                                                  (diffY < 0 ? y1 - yOffset : /*(diffY == 0 ? y1 :*/ y1 + yOffset));
-            newTile->setRoomId(startingRoomId);
+            DungeonTile* newTile = mGrid->getTile(x2,
+                                                  (diffY < 0 ? y1 - yOffset : y1 + yOffset));
+            //newTile->setRoomId(startingRoomId);
             r->addTile(newTile);
             newTile->setType(DungeonTile::CLEAR);
 		}
