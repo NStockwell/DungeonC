@@ -14,7 +14,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    DC mDC = DC(50,50,16,"../../DungeonC/dungeon_win6.txt");
+    DC mDC = DC(50,50,16,"../../DungeonC/dungeon_win8.txt");
     
     // insert code here...
     std::cout << "Hello, World!\n";

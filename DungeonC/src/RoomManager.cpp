@@ -457,7 +457,7 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
 {
     bool found = false;
     bool expandedThisRoom = false;
-    // DungeonTile* dtS = r->getSouthernTileAtColumn(i);
+
     if(dT != NULL)
     {
         //int checkingSIndex = dT->getY() + range;
@@ -509,9 +509,9 @@ bool RoomManager::checkThisTile(DungeonTile* dT, vector<DungeonTile*>tilesToChec
                         cout << "\n MERGING S ROOMS:" << r->getId() << " and room:" << checkingTile->getRoomId();
                         cout.flush();
                         
+                        roomsToMerge->push_back(checkingTile->getRoomId());
                         connectTheseTiles(dT, checkingTile, r);
                         
-                        roomsToMerge->push_back(checkingTile->getRoomId());
                         /*
                         r->addTile(wallTile);
                         wallTile->setType(DungeonTile::CLEAR);
@@ -562,7 +562,7 @@ void RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endT
             newTile->setRoomId(startingRoomId);
             r->addTile(newTile);
             newTile->setType(DungeonTile::CLEAR);
-           }
+		}
         
     }
     
