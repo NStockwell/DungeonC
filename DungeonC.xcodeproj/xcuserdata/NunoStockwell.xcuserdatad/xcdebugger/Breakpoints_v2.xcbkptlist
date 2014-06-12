@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
             endingLineNumber = "146"
-            landmarkName = "RoomManager::expandRooms()"
+            landmarkName = "RoomManager::expandRooms(int range)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
             endingLineNumber = "134"
-            landmarkName = "RoomManager::expandRooms()"
+            landmarkName = "RoomManager::expandRooms(int range)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "RoomManager::expandRooms()"
+            landmarkName = "RoomManager::expandRooms(int range)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -143,7 +143,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "RoomManager::expandRooms()"
+            landmarkName = "RoomManager::expandRooms(int range)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -175,7 +175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "532"
             endingLineNumber = "532"
-            landmarkName = "RoomManager::connectTheseTiles(DungeonTile* startingTile, DungeonTile* endTile, Room* r)"
+            landmarkName = "RoomManager::checkThisTile(DungeonTile* dT, vector&lt;DungeonTile*&gt;tilesToCheck, vector&lt;int&gt;*roomsToMerge, Room* r)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
