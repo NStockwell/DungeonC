@@ -1,0 +1,5 @@
+inputFilePath:../zxing/intermediate.txt
+rows:50
+columns:50
+GoLIterations:16
+outputFilePath:../../DungeonC/outputs/dungeon_win-1.txt
