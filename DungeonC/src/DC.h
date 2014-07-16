@@ -20,7 +20,7 @@ class DC
 {
     
 public:
-    DC(int w, int h, int iterations, string path);
+    DC(char* byteArray, int w, int h, int iterations, string path);
     
 private:
     
